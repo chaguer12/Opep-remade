@@ -1,45 +1,3 @@
-<?php
-include 'session.php';
-
-// Check user session and retrieve the role
-$userRole = checkUserSession($mysqli);
-
-// Redirect based on user role
-if ($userRole === 'blocked') {
-    header("Location: block-page.php");
-    exit();
-}
-if ($userRole !== 'admin') {
-    header("Location: SingIn.php");
-}
-
-// Initialize an error message variable
-$errorMsg = '';
-
-// If the form is submitted
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Validate and process form data
-    $categoryName = $_POST['name'];
-
-    $query = "INSERT INTO categorie (CategorieName) VALUES (?)";
-    $stmt = $mysqli->prepare($query);
-
-    if ($stmt) {
-        $stmt->bind_param('s', $categoryName);
-        $stmt->execute();
-        $stmt->close();
-
-        // Redirect to the dashboard after successful insertion
-        header("Location: dashboard.php");
-        exit();
-    } else {
-        // Set an error message
-        $errorMsg = "Error preparing statement: " . $mysqli->error;
-    }
-}
-?>
-
-
 <!DOCTYPE html>
 <html x-data="data()" lang="en">
 
@@ -62,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <section class="max-w-4xl p-6 mx-auto bg-purple-400 rounded-md shadow-md my-7">
         <h1 class="text-4xl font-bold capitalize">Add Category</h1>
-        <form action="" method="POST" id="form" enctype="multipart/form-data">
+        <form action="../includes/category.php" method="POST" id="form" enctype="multipart/form-data">
 
             <div id="formInp">
                 <div class="form-group mb-6">
@@ -74,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <div class="flex justify-between mt-6">
                 <div class="flex gap-6">
-                    <button type="submit" class="px-6 py-2 leading-5 transform rounded-md focus:outline-none font-bold bg-[#FFF8ED] transition hover:bg-purple-900 hover:text-[#FFF2DF]">
+                    <button type="submit" name="addCat" class="px-6 py-2 leading-5 transform rounded-md focus:outline-none font-bold bg-[#FFF8ED] transition hover:bg-purple-900 hover:text-[#FFF2DF]">
                         Save
                     </button>
                     <a href="dashboard.php">
