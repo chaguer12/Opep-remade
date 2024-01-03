@@ -1,5 +1,5 @@
 <?php
-require_once('../core/user.dao.php');
+    require_once('../core/user.dao.php');
 
 $user = new UserDAO();
 

@@ -74,4 +74,14 @@ class PlantDAO
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function FilterPlant($categorieid){
+        $query = "SELECT * FROM plant WHERE CategorieId = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $categorieid);
+        if ($stmt->execute()) {
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        
+
+    }
 }

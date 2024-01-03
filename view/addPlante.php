@@ -1,5 +1,14 @@
 <?php
 require_once('../core/plant.dao.php');
+include '../includes/session.php';
+
+if (!isset($_SESSION)) {
+    header('location: ../view/signin.php');
+}
+else if ($_SESSION['user']['RoleId'] == 1) {
+    header('location: ../view/notfound.php');
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -64,6 +73,7 @@ require_once('../core/plant.dao.php');
             </div>
         </form>
     </section>
+    
 </body>
 
 </html>

@@ -47,10 +47,12 @@ class UserDAO{
 
         
         if(count($result) == 1 && $role == 1){
+            $_SESSION['user'] = $result[0];
             $_SESSION['user_email'] = $email;
             header("Location: ../view/index.php");
         
         }elseif(count($result) == 1 && $role == 2){
+            $_SESSION['user'] = $result[0];
             $_SESSION['user_email'] = $email;
             header("Location: ../view/dashboard.php");
         

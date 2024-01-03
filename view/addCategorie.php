@@ -1,3 +1,14 @@
+<?php
+include '../includes/session.php';
+
+if (!isset($_SESSION)) {
+    header('location: ../view/signin.php');
+}
+else if ($_SESSION['user']['RoleId'] == 1) {
+    header('location: ../view/notfound.php');
+}
+
+?>
 <!DOCTYPE html>
 <html x-data="data()" lang="en">
 

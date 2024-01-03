@@ -1,5 +1,6 @@
 <?php
-
+include '../includes/session.php';
+// CheckClientSession()
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +17,8 @@
 
 <?php  
 
-// session_start();
-// print_r($_SESSION);
+
+
 
 ?>
     <header class="header sticky top-0 bg-white z-10 shadow-md flex items-center justify-between px-8 py-02">
@@ -37,24 +38,24 @@
                 </li>
                 <li
                     class="p-4 border-b-2 border-purple-700  border-opacity-0 hover:border-opacity-100 hover:text-purple-700  duration-200 cursor-pointer">
-                    <a href="Plants.php">Plants</a>
+                    <a href="plants.php">Plants</a>
                 </li>
 
                 <li
                     class="p-4 border-b-2 border-purple-700  border-opacity-0 hover:border-opacity-100 hover:text-purple-700  duration-200 cursor-pointer">
                     <a href="Cart.php">Cart</a>
                 </li>
-                <li
-                    class="p-4 border-b-2 border-purple-700  border-opacity-0 hover:border-opacity-100 hover:text-purple-700  duration-200 cursor-pointer">
-                    <a href="blog.php">Blog</a>
-                </li>
+              
+              
+                
+               
                 
             </ul>
         </nav>
 
 
         <div class="w-3/12 flex justify-end gap-5">
-            <a href="../view/SingIn.php" class="flex items-center mr-4 hover:text-purple-700 duration-200">
+            <a href="../includes/session.php?lougout=1" class="flex items-center mr-4 hover:text-purple-700 duration-200">
                 <span class="inline-flex mr-1">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
